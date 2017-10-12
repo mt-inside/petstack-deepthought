@@ -1,0 +1,9 @@
+---
+- name: remove master taint on all nodes
+  # Removes all taints with key node.../master (all values, all effects)
+  shell: kubectl taint nodes --all node-role.kubernetes.io/master-
+  environment:
+          KUBECONFIG: /etc/kubernetes/admin.conf
+  register: untaint
+  ignore_errors: True
+- debug: var=untaint.stdout_lines

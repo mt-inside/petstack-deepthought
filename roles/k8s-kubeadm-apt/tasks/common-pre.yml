@@ -1,0 +1,24 @@
+---
+- name: install prereqs
+  apt: name={{item}} state=installed
+  with_items:
+          - ebtables
+          - ethtool
+          - docker.io
+          - apt-transport-https
+
+- name: enable prereq services
+  systemd:
+          name: docker
+          enabled: yes
+          masked: no
+
+- name: kubeadm repo key
+  apt_key:
+          url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+          state: present
+
+- name: kubeadm repo
+  apt_repository:
+          repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+          state: present

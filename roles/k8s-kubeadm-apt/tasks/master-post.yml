@@ -1,0 +1,4 @@
+---
+# add one of the following to the API server's args
+    - --runtime-config=admissionregistration.k8s.io/v1alpha1=true
+    - --runtime-config=api/all=true

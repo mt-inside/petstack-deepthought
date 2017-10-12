@@ -1,0 +1,16 @@
+---
+- name: install k8s admin node
+  apt: name={{item}} state=installed
+  with_items:
+          - kubectl
+
+- name: add {{ admin_user }} to group docker
+  user:
+          name: "{{ admin_user }}"
+          groups: docker
+          append: yes
+
+- name: install helm
+  shell: "curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash"
+  register: helm_install
+- debug: var=helm_install.stdout_lines

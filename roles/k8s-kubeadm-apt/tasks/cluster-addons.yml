@@ -1,0 +1,15 @@
+---
+- name: download istio
+  shell: "curl -L https://git.io/getLatestIstio | sh -"
+  register: istio_download
+- debug: var=istio_download.stdout_lines
+ 
+- name: apply istio
+  shell: "kubectl apply -f {{ item }}"
+  environment:
+          KUBECONFIG: /etc/kubernetes/admin.conf
+  with_items:
+  - istio*/install/kubernetes/istio.yaml
+  - istio*/install/kubernetes/istio-initializer.yaml
+  register: istio_apply
+- debug: var=istio_apply.stdout_lines

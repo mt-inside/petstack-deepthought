@@ -1,0 +1,9 @@
+---
+- include: common-pre.yml tags=common,common:pre
+- include: master-pre.yml tags=master,master:pre
+- include: worker-pre.yml tags=worker,worker:pre
+- include: admin-pre.yml tags=admin,admin:pre
+- include: common-post.yml tags=common,common:post
+- include: worker-post.yml tags=worker,worker:post
+- include: admin-post.yml tags=admin,admin:post
+- include: cluster-addons.yml tags=cluster,cluster:addons

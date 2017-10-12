@@ -1,0 +1,20 @@
+---
+- name: install useful cli
+  apt: name={{item}} state=installed
+  with_items:
+          - git
+          - vim
+- name: install hardware pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - lsscsi
+          - lm-sensors
+- name: install admin pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - dstat
+- name: install dev pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - build-essential
+          - golang-go

@@ -1,0 +1,4 @@
+- name: install kubeadm
+  apt: name={{item}} state=installed
+  with_items:
+          - kubeadm

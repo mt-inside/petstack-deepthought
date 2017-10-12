@@ -1,0 +1,5 @@
+---
+- name: install k8s worker node
+  apt: name={{item}} state=installed
+  with_items:
+          - kubelet

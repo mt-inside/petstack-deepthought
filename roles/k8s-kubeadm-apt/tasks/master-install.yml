@@ -1,0 +1,6 @@
+---
+- name: run kubeadm
+  # Preflight checks object to docker storage driver type btrfs
+  shell: "kubeadm init --kubernetes-version v1.8.1 --skip-preflight-checks"
+  register: kubeadm_init
+- debug: var=kubeadm_init.stdout_lines
